@@ -1,24 +1,24 @@
-import express from "express";
-import ConnectDB from "./config/connectDB";
-import ContactModel from "./models/contact.model";
 require('dotenv').config(); 
 
+import express from "express";
+import ConnectDB from "./config/connectDB";
+import configViewEngine from "./config/viewEngine";
+
+// Init app 
 let app = express();
 
 // connect to MongoDB
-ConnectDB(); 
+ConnectDB();
 
-app.get("/test-database", async (req, res) => {
-  try {
-    let item = {
-      userId: "25101998",
-      contactId: "2510199825101998",
-    };
-    let contact = await ContactModel.createNew(item);
-    res.send(contact);
-  } catch (err) {
-    console.log(err);
-  } 
+// Config view engine
+configViewEngine(app);
+
+app.get("/", (req, res) => {
+  return res.render("main/master");
+});
+
+app.get("/login-register", (req, res) => {
+  return res. render("auth/loginRegister");
 });
 
 app.listen(process.env.port, process.env.hostname, () => {
