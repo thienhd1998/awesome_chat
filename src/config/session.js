@@ -13,7 +13,7 @@ let configSession = (app) => {
   app.use(session({
     key: "express.sid",
     secret: "mySecret",
-    Sstore: sessionStore,
+    Store: sessionStore,
     resave: true,
     saveUninitialized: false,
     cookie: {
