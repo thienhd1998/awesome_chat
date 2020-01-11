@@ -53,7 +53,7 @@ let verifyAccount = (token) => {
       return reject(transErrors.token_undefined);
     }
     await UserModel.verify(token);
-    resolve(transSuccess.account_active);
+    resolve(transSuccess.account_active); 
   });
 };
 
