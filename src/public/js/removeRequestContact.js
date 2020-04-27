@@ -18,14 +18,13 @@ function removeRequestContact() {
 }
 
 socket.on("response-remove-request-contact", function(user) {
-  $(".noti_content").find(`span[data-uid = ${user.id}]`).remove();
+  $(".noti_content").find(`div[data-uid = ${user.id}]`).remove(); // popup notification
+  $("ul.list-notifications").find(`li>div[data-uid = ${user.id}]`).parent().remove();
 
   // Xóa ở modal tab yêu cầu kết bạn
 
   decreaseNumberNotifContact("count-request-contact-received");
 
   decreaseNumberNotification("noti_contact_counter");
-  decreaseNumberNotification("noti_counter");
-
-  
+  decreaseNumberNotification("noti_counter");  
 });
