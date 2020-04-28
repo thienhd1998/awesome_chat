@@ -57,6 +57,7 @@ let initRoutes = (app) => {
   
   // Notification
   router.get("/notification/read-more", auth.checkLoggedIn, notification.readMore); 
+  router.push("/notification/mark-all-as-read", auth.checkLoggedIn, notification.markAllAsRead); 
 
   return app.use("/", router);
 };
