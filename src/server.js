@@ -1,18 +1,31 @@
+// Use env environment
 require('dotenv').config(); 
 
 import express from "express";
+
+// Use config
 import ConnectDB from "./config/connectDB";
 import configViewEngine from "./config/viewEngine";
-import initRoutes from "./routes/web";
-import bodyParser from "body-parser";
-import connectFlash from "connect-flash";
 import session from "./config/session";
+import configSocketIo from "./config/socketio";
+import initSockets from "./sockets/index";
+
+// Use router
+import initRoutes from "./routes/web";
+
+// Use post data for request
+import bodyParser from "body-parser";
+
+// Use cookie
+import cookieParser from "cookie-parser";
+
+// Use flash message
+import connectFlash from "connect-flash";
 import passport from "passport";
+
+// Use socket io
 import http from "http";
 import socketio from "socket.io";
-import initSockets from "./sockets/index";
-import cookieParser from "cookie-parser";
-import configSocketIo from "./config/socketio";
 
 import pem from "pem";
 import https from "https";
